@@ -6,11 +6,14 @@
 		<script type="text/javascript" src="js/function.js"></script>
 	</head>
 	<body>
-		<form name="inputForm" id="inputForm" action="InputProcessing.do" method="POST">
-			<textarea name="content" style="width: 600px; height: 300px; font-size:18px; resize:none"></textarea>
-			<br />
-			<input type="submit">
-			<input type="reset">
-		</form>
+		<div id="T1" style="border:1px solid black;height:300px;width:600px;padding:5">
+			<form name="inputForm" id="inputForm" action="InputProcessing.do" method="POST">
+				<textarea name="content" style="width: 600px; height: 300px; font-size:18px; resize:none"></textarea>
+				<br />
+				<input type="submit">
+				<input type="reset">
+			</form>
+		</div>
+		<button onclick = "loadXMLDoc('a.txt')">Click</button>
 	</body>
 </html>
