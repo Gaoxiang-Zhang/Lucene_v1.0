@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.nio.file.Paths;
 import java.util.Date;
 
+import javax.swing.text.StringContent;
+
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -104,7 +106,6 @@ public class IndexDBpediaFile {
 	public static String contentParser(String content) {
 		// remove the beginning and trailing space
 		String temp = content.trim();
-		
 		for(int i = temp.length() - 2; i >= 0; i--){
 			if ( (temp.charAt(i) == '"') && (temp.charAt(i+1) == '@') ){
 				if (temp.charAt(0) == '"') {

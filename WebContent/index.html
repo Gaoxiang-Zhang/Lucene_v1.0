@@ -1,19 +1,60 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Entity Linking</title>
-		<script type="text/javascript" src="js/function.js"></script>
-	</head>
-	<body>
-		<div id="T1" style="border:1px solid black;height:300px;width:600px;padding:5">
-			<form name="inputForm" id="inputForm" action="InputProcessing.do" method="POST">
-				<textarea name="content" style="width: 600px; height: 300px; font-size:18px; resize:none"></textarea>
-				<br />
-				<input type="submit">
-				<input type="reset">
-			</form>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Entity Linking</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.form.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="container">
+			<div class="jumbotron">
+		  		<h1>Entity Linking</h1>
+		 		 <p>海量图数据的管理与挖掘——大作业</p>
+		 		 <p>单旭东	王小西	张高翔</p>
+			</div>
 		</div>
-		<button onclick = "loadXMLDoc('a.txt')">Click</button>
-	</body>
+		<div class="container">
+		    <form id="form" method="post" action="ajaxOperation.ashx">
+	        	<span class="vertical_button_span">
+	        		<input type="checkbox" name="nbest" id="nbest" >n-best candidates</input>
+	            	<button class="btn btn-success" id="annotate"  type="submit">Annotate</button>
+	            	<button class="btn btn-default" id="backToText"  disabled="disabled">Back To Text</button>
+	            	<div id="status_indicator"></div>
+	            </span>
+		    	<textarea id="text_container"  name="content"  rows="10"></textarea>
+		    	<div id="result"></div>
+		    </form>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+	    var options = {
+	    		url:"http://localhost:8080/Lucene_v1.0/InputProcessing.do",
+	    		method:"post",
+		        success: function (data) {
+		            $("#result").html(data);
+		            $("#result").css("display", "block");
+		            $("#text_container").css("display", "none");
+		            $("#annotate").prop('disabled', true);
+		            $("#backToText").prop('disabled', false);
+		        }
+	    };
+	    $("#annotate").click(function() {
+	    	 $("#form").ajaxForm(options);
+	    });
+       $("#backToText").click(function() {
+    	   $("#result").css("display", "none");
+           $("#text_container").css("display", "block");
+    	   $("#annotate").prop('disabled', false);
+           $("#backToText").prop('disabled', true);
+       });
+    });
+</script>
 </html>

@@ -16,10 +16,10 @@ public class LingPipeEntityTest {
 
     	// generate the dictionary by manually giving <name(or alias), type, score>
         MapDictionary<String> dictionary = new MapDictionary<String>();
-        dictionary.addEntry(new DictionaryEntry<String>("50 Cent","PERSON",CHUNK_SCORE));
-        dictionary.addEntry(new DictionaryEntry<String>("XYZ120 DVD Player","DB_ID_1232",CHUNK_SCORE));
-        dictionary.addEntry(new DictionaryEntry<String>("cent","MONETARY_UNIT",CHUNK_SCORE));
-        dictionary.addEntry(new DictionaryEntry<String>("dvd player","PRODUCT",CHUNK_SCORE));
+        dictionary.addEntry(new DictionaryEntry<String>("50 Cent",""));
+        dictionary.addEntry(new DictionaryEntry<String>("XYZ120 DVD Player",""));
+        dictionary.addEntry(new DictionaryEntry<String>("cent",""));
+        dictionary.addEntry(new DictionaryEntry<String>("dvd player",""));
 
         // build the dictionary-chunker:
         // dictionary, tokenizer factory, flag1, flag2
@@ -51,17 +51,11 @@ public class LingPipeEntityTest {
         System.out.println("\nDICTIONARY\n" + dictionary);
         
         String text = "50 Cent is hard to distinguish from 50 cent and just plain cent without case.";
-        System.out.println("\n\nTEXT=" + text);
-        chunk(dictionaryChunkerTT,text);
-        chunk(dictionaryChunkerTF,text);
-        chunk(dictionaryChunkerFT,text);
+        System.out.println("TEXT=" + text);
         chunk(dictionaryChunkerFF,text);
         
         text = "The product xyz120 DVD player won't match unless it's exact like XYZ120 DVD Player.";
-        System.out.println("\n\nTEXT=" + text);
-        chunk(dictionaryChunkerTT,text);
-        chunk(dictionaryChunkerTF,text);
-        chunk(dictionaryChunkerFT,text);
+        System.out.println("TEXT=" + text);
         chunk(dictionaryChunkerFF,text);
 
     }

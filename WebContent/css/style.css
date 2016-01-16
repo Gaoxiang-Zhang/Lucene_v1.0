@@ -1,8 +1,6 @@
 .main{
-	width: 800px;
 	margin-top: 2em;
-	margin-left: auto;
-	margin-right: auto;
+	margin-bottom: 2em;
 }
 .copyright{
 	color: #666;
@@ -43,7 +41,7 @@
 	display: inline-block;
 	background: none;
 }
-#text_container{
+#text_container, #result{
 	width: 100%; 
 	min-height: 24px;
     border: 1px solid #a0b3d6; 
@@ -55,4 +53,7 @@
     padding: 10px;
     border-color: rgba(82, 168, 236, 0.8);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+#result{
+	display:none;
 }
